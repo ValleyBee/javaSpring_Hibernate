@@ -6,6 +6,6 @@ import org.springframework.stereotype.Component;
 public class Library {
 
     public void getBook(){
-        System.out.println("we are taking a book");
+        System.out.println("we are taking a book from Library");
     }
 }
