@@ -8,16 +8,16 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Aspect
-public class LoggingAndSecurityAspect {
+public class LoggingAspect {
     // call method in exact Class
     @Before("execution(public void aop.Library.getBook())")  // if type Class then full path getBook(aop.Library)
     public void beforeGetBookAdvice() {
-        System.out.println("beforeGetBookAdvice: attempt to get a book from Library.");
+        System.out.println("beforeGetBookAdvice:  attempt to get a book from Library.");
     }
 
     @Before("execution(public void getBook(String))")
     public void beforeGetBookAdvice2() {
-        System.out.println("beforeGetBookAdvice2: attempt to get a book from UniLibrary.");
+        System.out.println("beforeGetBookAdvice2:  attempt to get a book from UniLibrary.");
     }
 
     // call any method begins get* scan whole package
@@ -45,21 +45,15 @@ public class LoggingAndSecurityAspect {
     public void beforeReturnBookAdvice2() {
         System.out.println("beforeReturnBookAdvice2: calling before any method with any type and names return*.");
     }
-// POINTCUT I
 
-    @Pointcut("execution(* get* (*))")
-    public void allGetMethods(){}
-
-    @Before("allGetMethods()")
+//Pointcuts form Class MyPointcuts
+    @Before("aop.aspects.MyPointcuts.allGetMethods()")
     public void beforeGetLoggingAdvice() {
-        System.out.println("beforeGetLoggingAdvice: attempt to do");
+        System.out.println("beforeGetLoggingAdvice: Logged attempt to do");
     }
+//
 
-    // SECURITY ASPECT
-    @Before("allGetMethods()")
-    private void beforeGetSecurityAdvice() {
-        System.out.println("beforeGetSecurityAdvice: attempt to do");
-        }
+
 
     // POINTCUT II
     @Pointcut("execution(* aop.UniLibrary.get* (*))")
@@ -68,7 +62,7 @@ public class LoggingAndSecurityAspect {
     @Before("allGetMethodsUniLib()")
     public void beforeGetLoggingAdviceUnilib(){
 
-        System.out.println("beforeGetLoggingAdviceUnilib: writing log #1");
+        System.out.println("beforeGetLoggingAdviceUnilib: Logged writing log #1");
     }
     // POINTCUT III
     @Pointcut("execution(* aop.UniLibrary.return* ())")
