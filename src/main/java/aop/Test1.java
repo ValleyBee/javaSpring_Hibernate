@@ -13,7 +13,6 @@ public class Test1 {
 //        uniLibrary.getBook("Cooking advice");
 //        System.out.println("--------------------------------");
 
-
         uniLibrary.getBook("Spring course");
         uniLibrary.getMagazine(0);
         System.out.println("--------------------------------");
