@@ -14,6 +14,13 @@ public class Test1 {
         System.out.println("--------------------------------");
         uniLibrary.returnBook();
         uniLibrary.getMagazine(0);
+        System.out.println("--------------------------------");
+
+        uniLibrary.getBook("Spring course");
+        uniLibrary.returnMagazine();
+        uniLibrary.addBook();
+        System.out.println("--------------------------------");
+
 
         context.close();
 

@@ -45,7 +45,7 @@ public class LoggingAndSecurityAspect {
     public void beforeReturnBookAdvice2() {
         System.out.println("beforeReturnBookAdvice2: calling before any method with any type and names return*.");
     }
-// POINTCUTS
+// POINTCUT I
 
     @Pointcut("execution(* get* (*))")
     public void allGetMethods(){}
@@ -59,6 +59,36 @@ public class LoggingAndSecurityAspect {
     @Before("allGetMethods()")
     private void beforeGetSecurityAdvice() {
         System.out.println("beforeGetSecurityAdvice: attempt to do");
+        }
 
+    // POINTCUT II
+    @Pointcut("execution(* aop.UniLibrary.get* (*))")
+    public void allGetMethodsUniLib(){}
+
+    @Before("allGetMethodsUniLib()")
+    public void beforeGetLoggingAdviceUnilib(){
+
+        System.out.println("beforeGetLoggingAdviceUnilib: writing log #1");
     }
+    // POINTCUT III
+    @Pointcut("execution(* aop.UniLibrary.return* ())")
+    public void allReturnMethodsUnilib(){
+    }
+    @Before("allReturnMethodsUnilib()")
+    public void beforeReturnLoggingAdviceUnilib(){
+
+        System.out.println("beforeReturnLoggingAdviceUnilib: writing log #2");
+    }
+
+// Combination of Pointcuts II and III
+
+    @Pointcut("allGetMethodsUniLib() || allReturnMethodsUnilib() ")
+    private void allGetAndReturnMethodsUniLib(){  }
+@Before("allGetAndReturnMethodsUniLib()")
+    public void beforeGetAndReturnMethodsUniLib(){
+    System.out.println("beforeGetAndReturnMethodsUniLib: writing log #3");
+}
+
+
+
 }
