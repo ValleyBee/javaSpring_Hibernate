@@ -9,17 +9,19 @@ public class Test1 {
         UniLibrary uniLibrary = context.getBean("uniLibraryBean", UniLibrary.class);
 
 
-        library.getBook();
-        uniLibrary.getBook("Cooking advice");
-        System.out.println("--------------------------------");
-        uniLibrary.returnBook();
-        uniLibrary.getMagazine(0);
-        System.out.println("--------------------------------");
+//        library.getBook();
+//        uniLibrary.getBook("Cooking advice");
+//        System.out.println("--------------------------------");
+
 
         uniLibrary.getBook("Spring course");
-        uniLibrary.returnMagazine();
-        uniLibrary.addBook();
+        uniLibrary.getMagazine(0);
         System.out.println("--------------------------------");
+        uniLibrary.returnMagazine();
+        uniLibrary.returnBook();
+        System.out.println("--------------------------------");
+        uniLibrary.addBook();
+
 
 
         context.close();

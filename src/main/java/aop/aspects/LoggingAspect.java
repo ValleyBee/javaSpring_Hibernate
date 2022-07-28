@@ -4,10 +4,12 @@ package aop.aspects;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Component
 @Aspect
+@Order(1)
 public class LoggingAspect {
     // call method in exact Class
     @Before("execution(public void aop.Library.getBook())")  // if type Class then full path getBook(aop.Library)
@@ -20,19 +22,22 @@ public class LoggingAspect {
         System.out.println("beforeGetBookAdvice2:  attempt to get a book from UniLibrary.");
     }
 
+
     // call any method begins get* scan whole package
-    @Before("execution(public void get*())")
-    public void anyGetMethodAdvice() {
-        System.out.println("anyGetMethodAdvice: calling before any get* methods");
-    }
+
+//    @Before("execution(public void get*())")
+//    public void anyGetMethodAdvice() {
+//        System.out.println("anyGetMethodAdvice: calling before any get* methods");
+//    }
 
     // any methods with one any arg
-    @Before("execution(public void * (*))")  // (..)) any qtty args
-    public void anyMethodAnyArgAdvice() {
-        System.out.println("anyMethodAnyArgAdvice: calling before any methods with one any arg");
 
-    }
-
+//    @Before("execution(public void * (*))")  // (..)) any qtty args
+//    public void anyMethodAnyArgAdvice() {
+//        System.out.println("anyMethodAnyArgAdvice: calling before any methods with one any arg");
+//
+//    }
+@Order(6)
     @Before("execution(public void returnBook())")
 
     public void beforeReturnBookAdvice() {
@@ -75,13 +80,14 @@ public class LoggingAspect {
     }
 
 // Combination of Pointcuts II and III
-
-    @Pointcut("allGetMethodsUniLib() || allReturnMethodsUnilib() ")
-    private void allGetAndReturnMethodsUniLib(){  }
-@Before("allGetAndReturnMethodsUniLib()")
-    public void beforeGetAndReturnMethodsUniLib(){
-    System.out.println("beforeGetAndReturnMethodsUniLib: writing log #3");
-}
+//
+//    @Pointcut("allGetMethodsUniLib() || allReturnMethodsUnilib() ")
+//    private void allGetAndReturnMethodsUniLib(){  }
+//
+//    @Before("allGetAndReturnMethodsUniLib()")
+//    public void beforeGetAndReturnMethodsUniLib(){
+//    System.out.println("beforeGetAndReturnMethodsUniLib: writing log #3");
+//}
 
 
 
