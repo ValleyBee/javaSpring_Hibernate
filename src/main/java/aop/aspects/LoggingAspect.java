@@ -1,6 +1,7 @@
 // @POINTCUTS, ADVICES
 package aop.aspects;
 
+import aop.Book;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Aspect;
@@ -35,12 +36,12 @@ public class LoggingAspect {
 
     // any methods with one any arg
 
-//    @Before("execution(public void * (*))")  // (..)) any qtty args
+    //    @Before("execution(public void * (*))")  // (..)) any qtty args
 //    public void anyMethodAnyArgAdvice() {
 //        System.out.println("anyMethodAnyArgAdvice: calling before any methods with one any arg");
 //
 //    }
-@Order(6)
+    @Order(6)
     @Before("execution(public void returnBook())")
 
     public void beforeReturnBookAdvice() {
@@ -54,7 +55,7 @@ public class LoggingAspect {
         System.out.println("beforeReturnBookAdvice2: calling before any method with any type and names return*.");
     }
 
-//Pointcuts form Class MyPointcuts
+    //Pointcuts form Class MyPointcuts
     @Before("aop.aspects.MyPointcuts.allGetMethods()")
     public void beforeGetLoggingAdvice() {
         System.out.println("beforeGetLoggingAdvice: Logged attempt to do");
@@ -63,7 +64,25 @@ public class LoggingAspect {
 
     @Before("aop.aspects.MyPointcuts.allAddMethods()")
     public void beforeAddLoggingAdvice(JoinPoint joinPoint) {
+
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
+        if (methodSignature.getName().equals("addBook")) {
+            Object[] arg = joinPoint.getArgs();
+            for (Object obj : arg) {
+                if (obj instanceof Book) {
+                    Book myBook = (Book) obj;
+                    System.out.println("info about book" +
+                            ", name : " + myBook.getName() +
+                            ", author : " + myBook.getAuthor() +
+                            ", YearOfIssue : " + myBook.getYearOfIssue());
+
+                }
+                else if (obj instanceof String){
+                    System.out.println("name,how add the book : " + ((String) obj).toUpperCase());
+                }
+            }
+        }
+
         System.out.println("methodSignature = " + methodSignature);
         System.out.println("methodSignature.getMethod() = " + methodSignature.getMethod());
         System.out.println("methodSignature.getReturnType() = " + methodSignature.getReturnType());
@@ -77,19 +96,22 @@ public class LoggingAspect {
 
     // POINTCUT II
     @Pointcut("execution(* aop.UniLibrary.get* (*))")
-    public void allGetMethodsUniLib(){}
+    public void allGetMethodsUniLib() {
+    }
 
     @Before("allGetMethodsUniLib()")
-    public void beforeGetLoggingAdviceUnilib(){
+    public void beforeGetLoggingAdviceUnilib() {
 
         System.out.println("beforeGetLoggingAdviceUnilib: Logged writing log #1");
     }
+
     // POINTCUT III
     @Pointcut("execution(* aop.UniLibrary.return* ())")
-    public void allReturnMethodsUnilib(){
+    public void allReturnMethodsUnilib() {
     }
+
     @Before("allReturnMethodsUnilib()")
-    public void beforeReturnLoggingAdviceUnilib(){
+    public void beforeReturnLoggingAdviceUnilib() {
 
         System.out.println("beforeReturnLoggingAdviceUnilib: writing log #2");
     }
@@ -103,7 +125,6 @@ public class LoggingAspect {
 //    public void beforeGetAndReturnMethodsUniLib(){
 //    System.out.println("beforeGetAndReturnMethodsUniLib: writing log #3");
 //}
-
 
 
 }

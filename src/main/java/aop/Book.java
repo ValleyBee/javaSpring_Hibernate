@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Book{
-    @Value("Spring join point")
+    @Value("Spring join point") // this replaces setters
     private String name;
     @Value("ZT")
     private String author;

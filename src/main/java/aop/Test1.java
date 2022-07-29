@@ -22,8 +22,8 @@ public class Test1 {
 //        System.out.println("--------------------------------");
 
         // Join Point
-        Book book1 = new Book();
-        uniLibrary.addBook("Mark",book1);
+        Book book = context.getBean("book",Book.class);
+        uniLibrary.addBook("Mark",book);
         uniLibrary.addMagazine();
 
 
