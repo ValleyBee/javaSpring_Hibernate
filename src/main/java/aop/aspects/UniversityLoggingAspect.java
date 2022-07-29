@@ -18,6 +18,12 @@ public class UniversityLoggingAspect {
 
     @AfterReturning(pointcut = "execution(* getStudentList())",returning = "listStudents")
     public void afterReturnGetStudentLoggingAdvice(List<Student> listStudents){
+    Student firstStudent = listStudents.get(0);
+    String name = firstStudent.getNameSurname();
+    name = "Mr." + name;
+    firstStudent.setNameSurname(name);
+
+
         System.out.println("afterReturnGetStudentLoggingAdvice: Logging get " + " after method Students List");
     }
 }
