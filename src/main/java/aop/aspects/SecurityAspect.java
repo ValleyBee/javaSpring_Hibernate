@@ -13,6 +13,7 @@ public class SecurityAspect {
     private void beforeGetSecurityAdvice() {
         System.out.println("beforeGetSecurityAdvice: Checking permits attempt to do");
         System.out.println("---------------------------------------------------");
+
     }
     @Before("aop.aspects.MyPointcuts.allAddMethods()")
     private void beforeAddSecurityAdvice() {
