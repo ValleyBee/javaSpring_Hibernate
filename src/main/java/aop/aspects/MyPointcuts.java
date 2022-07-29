@@ -7,9 +7,10 @@ public class MyPointcuts {
 
     // POINTCUT I
 // SECURITY AND LOGGING ASPECTS
-    @Pointcut("execution(* get* (*))")
+
+    @Pointcut("execution(* __get* (*))") //  Test1 CLass.  to use replace __get* > get*.
     public void allGetMethods(){}
 
-    @Pointcut("execution(* add* (..))")
+    @Pointcut("execution(* add* (..))") // Test2 Class
     public void allAddMethods(){}
 }
