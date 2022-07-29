@@ -19,7 +19,7 @@ public class Test1 {
         uniLibrary.returnMagazine();
         uniLibrary.returnBook();
         System.out.println("--------------------------------");
-        uniLibrary.addBook();
+        //uniLibrary.addBook();
 
 
 

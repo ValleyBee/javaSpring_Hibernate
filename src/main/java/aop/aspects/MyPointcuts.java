@@ -9,4 +9,7 @@ public class MyPointcuts {
 // SECURITY AND LOGGING ASPECTS
     @Pointcut("execution(* get* (*))")
     public void allGetMethods(){}
+
+    @Pointcut("execution(* add* (*))")
+    public void allAddMethods(){}
 }

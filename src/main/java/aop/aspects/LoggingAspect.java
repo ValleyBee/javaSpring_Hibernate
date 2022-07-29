@@ -55,7 +55,16 @@ public class LoggingAspect {
     @Before("aop.aspects.MyPointcuts.allGetMethods()")
     public void beforeGetLoggingAdvice() {
         System.out.println("beforeGetLoggingAdvice: Logged attempt to do");
+        System.out.println("---------------------------------------------------");
     }
+
+    @Before("aop.aspects.MyPointcuts.allAddMethods()")
+    public void beforeAddLoggingAdvice() {
+        System.out.println("beforeAddLoggingAdvice: Logged attempt to do");
+        System.out.println("---------------------------------------------------");
+    }
+
+
 //
 
 
