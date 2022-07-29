@@ -13,13 +13,18 @@ public class Test1 {
 //        uniLibrary.getBook("Cooking advice");
 //        System.out.println("--------------------------------");
 
-        uniLibrary.getBook("Spring course");
-        uniLibrary.getMagazine(0);
-        System.out.println("--------------------------------");
-        uniLibrary.returnMagazine();
-        uniLibrary.returnBook();
-        System.out.println("--------------------------------");
-        //uniLibrary.addBook();
+//        uniLibrary.getBook("Spring course");
+//        uniLibrary.getMagazine(0);
+//        System.out.println("--------------------------------");
+//
+//        uniLibrary.returnMagazine();
+//        uniLibrary.returnBook();
+//        System.out.println("--------------------------------");
+
+        // Join Point
+        Book book1 = new Book();
+        uniLibrary.addBook("Mark",book1);
+        uniLibrary.addMagazine();
 
 
 

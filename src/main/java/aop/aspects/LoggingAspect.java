@@ -1,9 +1,12 @@
 // @POINTCUTS, ADVICES
 package aop.aspects;
 
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
@@ -59,14 +62,17 @@ public class LoggingAspect {
     }
 
     @Before("aop.aspects.MyPointcuts.allAddMethods()")
-    public void beforeAddLoggingAdvice() {
+    public void beforeAddLoggingAdvice(JoinPoint joinPoint) {
+        MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
+        System.out.println("methodSignature = " + methodSignature);
+        System.out.println("methodSignature.getMethod() = " + methodSignature.getMethod());
+        System.out.println("methodSignature.getReturnType() = " + methodSignature.getReturnType());
+        System.out.println("methodSignature.getName() = " + methodSignature.getName());
+
+
         System.out.println("beforeAddLoggingAdvice: Logged attempt to do");
         System.out.println("---------------------------------------------------");
     }
-
-
-//
-
 
 
     // POINTCUT II
