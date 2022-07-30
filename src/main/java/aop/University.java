@@ -19,8 +19,9 @@ studentList.add(st2);
 studentList.add(st3);
     }
 
-    public List<Student> getStudentList (){
-
+    public List<Student> getStudentList () {
+        System.out.println("started method getStudentList");
+        System.out.println(studentList.get(9));
         System.out.println("information from method getStudents");
         System.out.println(studentList);
         return studentList;
