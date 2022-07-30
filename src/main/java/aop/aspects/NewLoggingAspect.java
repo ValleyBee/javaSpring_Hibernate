@@ -15,9 +15,12 @@ public class NewLoggingAspect {
         System.out.println("---------------------------------------------------");
         System.out.println("Executing Before part of business method");
         System.out.println("---------------------------------------------------");
+        long beginT = System.currentTimeMillis();
         Object targetMethodResult = pj.proceed(); // this code will call business method
+        long endT = System.currentTimeMillis();
         System.out.println("Executing After part of business method");
         System.out.println("---------------------------------------------------");
+        System.out.println("aroundReturnBookLoggingAdvice: method returnBook2 done within - " + (endT - beginT) + "ms");
         return targetMethodResult;
     }
 }
