@@ -21,7 +21,7 @@ public class NewLoggingAspect {
             targetMethodResult = pj.proceed(); // this code will call business method
         } catch (Exception e){
             System.out.println("aroundReturnBookLoggingAdvice: Caught exception " + e);
-            targetMethodResult = "default";
+            throw e;
         }
         long endT = System.currentTimeMillis();
         System.out.println("Executing After part of business method");
