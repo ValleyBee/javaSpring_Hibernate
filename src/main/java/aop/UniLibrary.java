@@ -20,7 +20,7 @@ public class UniLibrary {
     }
 
     public String returnBook2(){
-        int a = 10/0;
+      // int a = 10/0;
         System.out.println("we return the book to UniLibrary: " + "\n---------------------------------------------------");
         return ("book name - Spring AOP");
 
