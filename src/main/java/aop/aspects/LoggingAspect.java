@@ -46,14 +46,10 @@ public class LoggingAspect {
 
     public void beforeReturnBookAdvice() {
         System.out.println("beforeReturnBookAdvice: attempt to return a book.");
+        System.out.println("---------------------------------------------------");
     }
 
-    // call any method with any type and names return*
-    @Before("execution(public * return*())")
 
-    public void beforeReturnBookAdvice2() {
-        System.out.println("beforeReturnBookAdvice2: calling before any method with any type and names return*.");
-    }
 
     //Pointcuts form Class MyPointcuts
     @Before("aop.aspects.MyPointcuts.allGetMethods()")
