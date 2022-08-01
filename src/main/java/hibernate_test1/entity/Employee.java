@@ -1,6 +1,8 @@
 package hibernate_test1.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
@@ -16,11 +18,16 @@ public class Employee {
         this.department = department;
         this.salary = salary;
     }
-
+    @Id
+    @Column(name = "id")
     private int id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "surname")
     private String surname;
+    @Column(name = "department")
     private String department;
+    @Column(name = "salary")
     private int salary;
 
 
