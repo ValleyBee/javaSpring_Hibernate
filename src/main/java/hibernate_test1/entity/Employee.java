@@ -1,5 +1,6 @@
 package hibernate_test1.entity;
 
+// Annotation JPA
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
