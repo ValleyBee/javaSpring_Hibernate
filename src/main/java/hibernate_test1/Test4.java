@@ -22,7 +22,7 @@ import java.util.List;
              emp.setSalary(6400);
 
              // update db table by HQL
-             session.createQuery("update Employee set salary=1000 where department = 'Sales'").executeUpdate();
+             session.createQuery("update Employee set salary=1111 where department = 'Sales' and surname = 'Valen' ").executeUpdate();
 
 
 
