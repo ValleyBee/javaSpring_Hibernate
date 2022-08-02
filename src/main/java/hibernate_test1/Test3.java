@@ -23,9 +23,9 @@ import java.util.List;
 
              employeeList.forEach(System.out::println);
 
-             System.out.println("------------------------------------------------");
+             System.out.println("----------------------------------------------------------------------------------------------");
 
-             employeeList = session.createQuery("from Employee where surname = 'Bersh' ").getResultList(); // get List data by where name
+             employeeList = session.createQuery("from Employee where surname = 'Bersh' and salary >=7000 ").getResultList(); // get List data by where name
 
              employeeList.forEach(System.out::println);
 
