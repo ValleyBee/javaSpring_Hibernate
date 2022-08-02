@@ -12,10 +12,11 @@ public class Test1 {
         SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Employee.class).buildSessionFactory();
         try {
             Session session = factory.getCurrentSession();
-            Employee emp = new Employee("Mark", "Bersh", "Soft Dev", 7000);
+            Employee emp = new Employee("Val", "Bersh", "Owner", 4000);
             session.beginTransaction();
             session.save(emp); //INSERT SQL
             session.getTransaction().commit();
+            System.out.println("operation with database done");
         } finally {
             factory.close();
         }
