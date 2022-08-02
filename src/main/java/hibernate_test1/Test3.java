@@ -18,7 +18,14 @@ import java.util.List;
              /* add to database */
              Session session = factory.getCurrentSession();
              session.beginTransaction();
-             List<Employee> employeeList = session.createQuery("from Employee").getResultList();
+
+             List<Employee> employeeList = session.createQuery("from Employee").getResultList(); // list all data from db
+
+             employeeList.forEach(System.out::println);
+
+             System.out.println("------------------------------------------------");
+
+             employeeList = session.createQuery("from Employee where surname = 'Bersh' ").getResultList(); // get List data by where name
 
              employeeList.forEach(System.out::println);
 
