@@ -1,4 +1,5 @@
- /* add to database and  get from database in one session  */
+ /* add to database and  get from database in one session
+ * get object from db by ID */
 package hibernate_test1;
 
 
@@ -23,6 +24,7 @@ public class Test2 {
             int myId = emp.getId();
 
 /* get from table by SELECT and convert data to Object Employee
+get object by ID
  get is SELECT SQL */
             Employee employee = session.get(Employee.class, myId);
             session.getTransaction().commit();
