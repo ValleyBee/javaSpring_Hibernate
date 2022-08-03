@@ -1,5 +1,4 @@
-/* Creating a session
-add to database
+/* add table with Foreign Key to a database
 *  */
 package hibernate_test2;
 
@@ -19,6 +18,7 @@ public class Test1 {
             Employee employee = new Employee("ALex","Valev","Sales",5000);
             Detail detail = new Detail("Lviv","098364785","alex@gmail.com");
             employee.setEmpDetails(detail);
+
 
             Session session = factory.getCurrentSession();
             session.beginTransaction();
