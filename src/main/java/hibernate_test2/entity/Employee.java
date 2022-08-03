@@ -37,7 +37,7 @@ public class Employee {
     @Column(name = "salary")
     private int salary;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL) // by default not cascade
     @JoinColumn(name = "details_id")
     private Detail empDetails;
 
@@ -79,6 +79,14 @@ public class Employee {
 
     public void setSalary(int salary) {
         this.salary = salary;
+    }
+
+    public Detail getEmpDetails() {
+        return empDetails;
+    }
+
+    public void setEmpDetails(Detail empDetails) {
+        this.empDetails = empDetails;
     }
 
     @Override
