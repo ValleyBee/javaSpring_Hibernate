@@ -1,4 +1,5 @@
 /* Upgrade current table with new field details (Foreign Key) referenced to a table
+by @OneToOne relation
   */
 package hibernate_test2;
 
@@ -21,7 +22,7 @@ public class Test11 {
         try {
             session = factory.getCurrentSession();
             session.beginTransaction();
-            Employee employee = session.get(Employee.class,11);
+            Employee employee = session.get(Employee.class,11); // serial it's PK
             Detail detail = new Detail("Canada","096000005","employee@yahoo.com");
 
             System.out.println(employee.getEmpDetails());

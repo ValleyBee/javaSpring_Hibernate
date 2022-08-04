@@ -1,5 +1,5 @@
 /* add table with Foreign Key to a database
-*  */
+ by @OneToOne relation */
 package hibernate_test2;
 
 

@@ -7,14 +7,20 @@ import javax.persistence.*;
 public class Detail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name ="id")
+    @Column(name = "id")
     private int id;
-    @Column (name = "city")
+    @Column(name = "city")
     private String city;
     @Column(name = "phone_number")
     private String phoneNumber;
     @Column(name = "email")
     private String email;
+
+
+    /* by  @OneToOne(mappedBy = "empDetails")  mappedBy attribute is used to define the referencing side.
+     after that it will be Bi-directional connection */
+    @OneToOne(mappedBy = "empDetails", cascade = CascadeType.ALL)
+    private Employee employee;
 
     public Detail() {
     }
@@ -55,6 +61,14 @@ public class Detail {
 
     public String getEmail() {
         return email;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
     @Override

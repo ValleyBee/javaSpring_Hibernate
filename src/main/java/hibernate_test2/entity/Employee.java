@@ -39,6 +39,8 @@ public class Employee {
 
     /* by @OneToOne(cascade = CascadeType.ALL)  type Cascade - means changing will be done in all related tables */
     @OneToOne(cascade = CascadeType.ALL) // by default not cascade
+    /* The @JoinColumn annotation defines that actual physical mapping on the owning side:
+    the owning side is usually defined on the many side of the relationship. It's typically the side that owns the foreign key. */
     @JoinColumn(name = "details_id")
     private Detail empDetails;
 
