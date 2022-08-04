@@ -37,6 +37,7 @@ public class Employee {
     @Column(name = "salary")
     private int salary;
 
+    /* by @OneToOne(cascade = CascadeType.ALL)  type Cascade - means changing will be done in all related tables */
     @OneToOne(cascade = CascadeType.ALL) // by default not cascade
     @JoinColumn(name = "details_id")
     private Detail empDetails;
