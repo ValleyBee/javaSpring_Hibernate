@@ -28,9 +28,15 @@ public class Test2 {
             employee.setEmpDetails(detail);
             detail.setEmployee(employee);
 
-            session.save(detail);
+            /*because of Cascade data will update in all connected tables */
 
-            System.out.println(employee.getEmpDetails());
+            // session.save(detail);
+            // session.deleted(detail);
+
+
+            Detail detailInfo = session.get(Detail.class,11);
+
+            System.out.println(detailInfo.getEmployee() + "\n" + detailInfo);
 
 
 
