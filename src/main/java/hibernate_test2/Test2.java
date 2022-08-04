@@ -1,5 +1,5 @@
-/* Upgrade current table with new field details (Foreign Key) referenced to a table
-by @OneToOne Uni direction relation
+/* since we added Attribute @OneToOne(mappedBy = "empDetails")  relation between classes became Bi direction.
+now we can save all data to database by table 'details'
   */
 package hibernate_test2;
 
@@ -10,7 +10,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class Test11 {
+public class Test2 {
     public static void main(String[] args) {
 
         SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Employee.class).addAnnotatedClass(Detail.class).buildSessionFactory();
@@ -22,14 +22,16 @@ public class Test11 {
         try {
             session = factory.getCurrentSession();
             session.beginTransaction();
-            Employee employee = session.get(Employee.class,11); // serial it's PK
-            Detail detail = new Detail("Canada","096000005","employee@yahoo.com");
+            Employee employee = new Employee("ALex","Valev","Sales",5000);
+            Detail detail = new Detail("Lviv","098364785","alex@gmail.com");
+
+            employee.setEmpDetails(detail);
+            detail.setEmployee(employee);
+
+            session.save(detail);
 
             System.out.println(employee.getEmpDetails());
-            //employee.setEmpDetails(detail);
 
-            // session.save(employee);  /* by @OneToOne(cascade = CascadeType.ALL)  type Cascade - means changing will be done in all related tables */
-            session.delete(employee);
 
 
             session.getTransaction().commit();

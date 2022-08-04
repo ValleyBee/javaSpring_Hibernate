@@ -17,7 +17,7 @@ public class Detail {
     private String email;
 
 
-    /* by  @OneToOne(mappedBy = "empDetails")  mappedBy attribute is used to define the referencing side.
+    /* by  @OneToOne(mappedBy = "empDetails")  mappedBy attribute. we show Hibernate where to search connection between classes.
      after that it will be Bi-directional connection */
     @OneToOne(mappedBy = "empDetails", cascade = CascadeType.ALL)
     private Employee employee;
