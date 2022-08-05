@@ -20,9 +20,8 @@ public class Detail {
     private String email;
 
 
-    /* by  @OneToOne(mappedBy = "empDetails")  mappedBy attribute. we show Hibernate where to search connection between classes.
+    /* by  @OneToOne(mappedBy = "empDetails")  mappedBy attribute. we simply tall to Hibernate where to search connection between classes.
      after that it will be Bi-directional connection */
-
 @OneToOne(mappedBy = "empDetails", cascade = CascadeType.ALL) // connection to class Employee filed private Detail empDetails;
     private Employee employee;
 
