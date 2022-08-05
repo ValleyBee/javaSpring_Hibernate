@@ -34,9 +34,8 @@ public class Test2 {
             // session.deleted(detail);
 
 
+            Detail detailInfo = session.get(Detail.class,2);
 
-
-            Detail detailInfo = session.get(Detail.class,1);
 
             System.out.println(detailInfo.getEmployee() + "\n" + detailInfo);
 
