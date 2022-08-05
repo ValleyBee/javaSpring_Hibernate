@@ -22,7 +22,7 @@ public class Detail {
 
     /* by  @OneToOne(mappedBy = "empDetails")  mappedBy attribute. we simply tall to Hibernate where to search connection between classes.
      after that it will be Bi-directional connection */
-@OneToOne(mappedBy = "empDetails", cascade = CascadeType.ALL) // connection to class Employee filed private Detail empDetails;
+@OneToOne(mappedBy = "empDetails", cascade = {CascadeType.PERSIST,CascadeType.REFRESH}) // connection to class Employee filed private Detail empDetails;
     private Employee employee;
 
     public Detail() {

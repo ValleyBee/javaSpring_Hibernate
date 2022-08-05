@@ -25,19 +25,25 @@ public class Test2 {
             Employee employee = new Employee("ALex","Valev","Sales",5000);
             Detail detail = new Detail("Lviv","098364785","alex@gmail.com");
 
+            /* Even if tables are joined for correct operations (insert,update,delete) call method sets for both classes */
 //            employee.setEmpDetails(detail);
 //            detail.setEmployee(employee);
 
-            /*because of Cascade.ALL data will change in all connected tables */
+            //Detail detailInfo = session.get(Detail.class,5);
+            // detailInfo.getEmployee().setEmpDetails(null);
+             Employee employeeInfo = session.get(Employee.class,12);
+             employeeInfo.setEmpDetails(detail);
 
-            // session.save(detail);
-            // session.deleted(detail);
+            /* because of Cascade.ALL data will change in all Joined tables */
+            session.save(detail);
+            /* because of Cascade.ALL data will change in all Joined tables */
+
+             // session.delete(detailInfo);
 
 
-            Detail detailInfo = session.get(Detail.class,2);
 
 
-            System.out.println(detailInfo.getEmployee() + "\n" + detailInfo);
+            //System.out.println(detailInfo.getEmployee() + "\n" + detailInfo);
 
             /* how delete only details of Employee ?
             detailInfo.getEmployee().setEmpDetails(null);
