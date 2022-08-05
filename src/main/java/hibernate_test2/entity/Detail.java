@@ -1,5 +1,8 @@
+/* for Bi-directional connection  need add
+* field private Employee employee; with annotation @OneToOne(mappedBy = "empDetails", cascade = CascadeType.ALL)
+* and setter & getter for a field Employee*/
 package hibernate_test2.entity;
-
+import javax.persistence.OneToOne;
 import javax.persistence.*;
 
 @Entity
@@ -19,7 +22,8 @@ public class Detail {
 
     /* by  @OneToOne(mappedBy = "empDetails")  mappedBy attribute. we show Hibernate where to search connection between classes.
      after that it will be Bi-directional connection */
-    @OneToOne(mappedBy = "empDetails", cascade = CascadeType.ALL)
+
+@OneToOne(mappedBy = "empDetails", cascade = CascadeType.ALL) // connection to class Employee filed private Detail empDetails;
     private Employee employee;
 
     public Detail() {

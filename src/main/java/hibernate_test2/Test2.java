@@ -25,20 +25,24 @@ public class Test2 {
             Employee employee = new Employee("ALex","Valev","Sales",5000);
             Detail detail = new Detail("Lviv","098364785","alex@gmail.com");
 
-            employee.setEmpDetails(detail);
-            detail.setEmployee(employee);
+//            employee.setEmpDetails(detail);
+//            detail.setEmployee(employee);
 
-            /*because of Cascade data will update in all connected tables */
+            /*because of Cascade.ALL data will change in all connected tables */
 
             // session.save(detail);
             // session.deleted(detail);
 
 
-            Detail detailInfo = session.get(Detail.class,11);
+
+
+            Detail detailInfo = session.get(Detail.class,1);
 
             System.out.println(detailInfo.getEmployee() + "\n" + detailInfo);
 
-
+            /* how delete only details of Employee ?
+            detailInfo.getEmployee().setEmpDetails(null);
+            session.delete(detailInfo); */
 
             session.getTransaction().commit();
             System.out.println("operation with database done");

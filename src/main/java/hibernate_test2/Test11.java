@@ -22,14 +22,16 @@ public class Test11 {
         try {
             session = factory.getCurrentSession();
             session.beginTransaction();
-            Employee employee = session.get(Employee.class,11); // serial it's PK
+            Employee employee = session.get(Employee.class,12); // serial it's PK
             Detail detail = new Detail("Canada","096000005","employee@yahoo.com");
 
+            //employee.setEmpDetails();
             System.out.println(employee.getEmpDetails());
-            //employee.setEmpDetails(detail);
+
+            employee.setEmpDetails(detail);
 
             // session.save(employee);  /* by @OneToOne(cascade = CascadeType.ALL)  type Cascade - means changing will be done in all related tables */
-            session.delete(employee);
+            //session.delete(employee);
 
 
             session.getTransaction().commit();
