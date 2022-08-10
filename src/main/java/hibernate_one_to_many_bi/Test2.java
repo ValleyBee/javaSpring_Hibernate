@@ -1,4 +1,10 @@
-/* Lazy, Eager types of loading data from database */
+/* Lazy, Eager types of loading data from database
+* Default type
+* OneToOne - Eager
+* OneToMany - Lazy
+* ManyToOne - Eager
+* ManyToMany - Lazy */
+
 package hibernate_one_to_many_bi;
 
 
@@ -31,19 +37,21 @@ public class Test2 {
 
 /***************************** get all info about Employee by its id or by department *****************************************/
 
-
+            System.out.println("-------------- 1 Get department");
             Department departmentInfo = session.get(Department.class, 2);
 
-            System.out.println("--------------------------------------------------------------------------");
+            System.out.println("-------------- 2 Show department -------------------------------------------");
             System.out.println(departmentInfo);
-            System.out.println("--------------------------------------------------------------------------");
+            System.out.println("-------------  3 Show employees of department-------------------------------");
             System.out.println(departmentInfo.getEmps());
 
-            System.out.println("--------------------------------------------------------------------------");
+            System.out.println("");
+            System.out.println("-------------- 4 Get employees");
             Employee employeeInfo = session.get(Employee.class, 3);
+            System.out.println("-------------- 5 Show employee --------------------------------------------");
 
             System.out.println(employeeInfo);
-            System.out.println("--------------------------------------------------------------------------");
+            System.out.println("-------------- 6 Show department of employees ------------------------------");
             System.out.println(employeeInfo.getDepartment());
 
 
