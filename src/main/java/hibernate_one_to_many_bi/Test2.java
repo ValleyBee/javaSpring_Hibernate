@@ -43,19 +43,22 @@ public class Test2 {
             System.out.println("-------------- 2 Show department -------------------------------------------");
             System.out.println(departmentInfo);
             System.out.println("-------------  3 Show employees of department-------------------------------");
-            System.out.println(departmentInfo.getEmps());
+          //  departmentInfo.getEmps().get(0); // to avoid exception Lazy failed
 
+            System.out.println(departmentInfo.getEmps());
             System.out.println("");
             System.out.println("-------------- 4 Get employees");
+
             Employee employeeInfo = session.get(Employee.class, 3);
             System.out.println("-------------- 5 Show employee --------------------------------------------");
-
             System.out.println(employeeInfo);
             System.out.println("-------------- 6 Show department of employees ------------------------------");
             System.out.println(employeeInfo.getDepartment());
 
-
             session.getTransaction().commit();
+
+
+
             System.out.println("operation with database done");
 
         } finally {

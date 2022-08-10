@@ -20,7 +20,7 @@ public class Department {
 
     /* except Cascade.remove  allows you to delete employee without deleting whole department
      Lazy, Eager types of loading data from database */
-    @OneToMany(cascade = {CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.DETACH,CascadeType.MERGE}, mappedBy = "department", fetch = FetchType.EAGER)
+    @OneToMany(cascade = {CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.DETACH,CascadeType.MERGE}, mappedBy = "department", fetch = FetchType.LAZY)
     private List<Employee> listEmps;
 
 
