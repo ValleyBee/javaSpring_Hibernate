@@ -7,7 +7,6 @@ import java.util.List;
 @Entity
 @Table(name = "section")
 public class Section {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -15,14 +14,29 @@ public class Section {
     @Column(name = "name")
     private String name;
 
-    private List<Section> sectionList;
+private List<Child> childList;
+
+public void addChildSection(Child child){
+    if (childList == null){
+        childList = new ArrayList<>();
+    }
+    childList.add(child);
+}
 
     public Section() {
     }
 
-    public Section(int id, String name) {
-        this.id = id;
-        this.name = name;
+
+    public Section(String name) {
+         this.name = name;
+    }
+
+    public List<Child> getChildList() {
+        return childList;
+    }
+
+    public void setChildList(List<Child> childList) {
+        this.childList = childList;
     }
 
     public int getId() {
@@ -41,13 +55,7 @@ public class Section {
         this.name = name;
     }
 
-    public List<Section> getSectionList() {
-        return sectionList;
-    }
 
-    public void setSectionList(List<Section> sectionList) {
-        this.sectionList = sectionList;
-    }
 
     @Override
     public String toString() {
@@ -57,11 +65,5 @@ public class Section {
                 '}';
     }
 
-    public void addChildSection(Section section){
-        if (sectionList == null){
-            sectionList = new ArrayList<>();
-        }
-        sectionList.add(section);
 
-    }
 }

@@ -1,6 +1,8 @@
 package hibernate_many_to_many.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "children")
@@ -14,15 +16,32 @@ public class Child {
     @Column(name = "age")
     private int age;
 
+
+    private List<Section> sectionList;
     public Child() {
     }
 
-    public Child(int id, String name, int age) {
-        this.id = id;
+    public Child(String name, int age) {
         this.name = name;
         this.age = age;
     }
 
+    public List<Section> getSectionList() {
+        return sectionList;
+    }
+
+    public void setSectionList(List<Section> sectionList) {
+        this.sectionList = sectionList;
+    }
+
+
+    public void addChildSection(Section section){
+        if (sectionList == null){
+            sectionList = new ArrayList<>();
+        }
+        sectionList.add(section);
+
+    }
     public int getId() {
         return id;
     }
@@ -45,5 +64,14 @@ public class Child {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "Child{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                '}';
     }
 }
