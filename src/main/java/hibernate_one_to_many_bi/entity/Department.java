@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="departments")
+@Table(name="departments_new")
 public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,8 +25,7 @@ public class Department {
     public Department() {
     }
 
-    public Department(int id, String department_name, int maxSalary, int minSalary) {
-        this.id = id;
+    public Department(String department_name, int maxSalary, int minSalary) {
         this.department_name = department_name;
         this.maxSalary = maxSalary;
         this.minSalary = minSalary;
