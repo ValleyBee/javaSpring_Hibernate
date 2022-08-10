@@ -19,25 +19,31 @@ public class Test1 {
             session = factory.getCurrentSession();
             session.beginTransaction();
 
-//            Department department = new Department("IT", 500, 1200);
-//            Employee emp1 = new Employee("Mark", "Bersh", 500);
-//            Employee emp2 = new Employee("Yakiv", "Bersh", 300);
-//
+            Department department = new Department("HR", 500, 1200);
+            Employee emp1 = new Employee("Valenty", "Bersh", 600);
+            Employee emp2 = new Employee("Julia", "Bersh", 250);
+
 //            department.addEmpsToDepartment(emp1);
 //            department.addEmpsToDepartment(emp2);
 //            session.save(department);
+//            session.save(emp1);
+//            session.save(emp2);
+
 
 /***************************** get all info about Employee by its id or by department *****************************************/
-            Department departmentInfo = session.get(Department.class, 1);
+
+
+            Department departmentInfo = session.get(Department.class, 2);
+
+
             System.out.println(departmentInfo);
             System.out.println(departmentInfo.getEmps());
 
             System.out.println("-------------------------------------------------");
-            Employee employeeInfo = session.get(Employee.class,1);
+            Employee employeeInfo = session.get(Employee.class, 3);
+
             System.out.println(employeeInfo);
             System.out.println(employeeInfo.getDepartment());
-
-
 
 
             session.getTransaction().commit();

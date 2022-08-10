@@ -18,7 +18,8 @@ public class Department {
     @Column(name = "min_salary")
     private int minSalary;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "department")
+    // except Cascade.remove  allows you to delete employee without deleting whole department
+    @OneToMany(cascade = {CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.DETACH,CascadeType.MERGE}, mappedBy = "department")
     private List<Employee> listEmps;
 
 

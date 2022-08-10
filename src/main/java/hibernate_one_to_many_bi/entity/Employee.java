@@ -36,8 +36,11 @@ public class Employee {
     @Column(name = "salary")
     private int salary;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "department_id")
+    // except Cascade.REMOVE   allows you to delete employee without deleting whole department
+    // ManyToOne when JoinColumn refers to Foreign_key (Many) is source table to (One) target table
+    // OneToMany from target table to source(Many)
+    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.DETACH,CascadeType.MERGE})
+    @JoinColumn(name = "department_id") // here is Foreign_key
     private Department department;
 
 
