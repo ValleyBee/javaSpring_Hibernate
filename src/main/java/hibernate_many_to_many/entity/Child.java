@@ -1,3 +1,4 @@
+/* ManyToMany annotation @JoinTable  */
 package hibernate_many_to_many.entity;
 
 import javax.persistence.*;
@@ -25,7 +26,8 @@ public class Child {
         this.name = name;
         this.age = age;
     }
-
+@ManyToMany(cascade = CascadeType.ALL)
+@JoinTable(name = "child_section",joinColumns = @JoinColumn (name = "child_id"), inverseJoinColumns = @JoinColumn (name = "section_id"))
     public List<Section> getSectionList() {
         return sectionList;
     }

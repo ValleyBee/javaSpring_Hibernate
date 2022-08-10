@@ -1,4 +1,7 @@
+/* ManyToMany annotation @JoinTable  */
 package hibernate_many_to_many.entity;
+
+import hibernate_many_to_many.entity.Child;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -14,21 +17,24 @@ public class Section {
     @Column(name = "name")
     private String name;
 
-private List<Child> childList;
+    /* JoinColumn refers to jointqble PK source table and inverseColumn refers to jointable PK target table*/
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "child_section", joinColumns = @JoinColumn(name = "section_id"), inverseJoinColumns = @JoinColumn(name = "child_id"))
+    private List<Child> childList;
 
-public void addChildSection(Child child){
-    if (childList == null){
-        childList = new ArrayList<>();
+    public void addChildSection(Child child) {
+        if (childList == null) {
+            childList = new ArrayList<>();
+        }
+        childList.add(child);
     }
-    childList.add(child);
-}
 
     public Section() {
     }
 
 
     public Section(String name) {
-         this.name = name;
+        this.name = name;
     }
 
     public List<Child> getChildList() {
@@ -54,7 +60,6 @@ public void addChildSection(Child child){
     public void setName(String name) {
         this.name = name;
     }
-
 
 
     @Override
