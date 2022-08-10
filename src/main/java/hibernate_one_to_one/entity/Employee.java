@@ -1,13 +1,10 @@
-package hibernate_test2.entity;
+package hibernate_one_to_one.entity;
 
 // Annotation One to One
 /*   @OneToOne
     private Detail empDetails;
 
  */
-import javax.persistence.*;
-
-
 import javax.persistence.*;
 
 @Entity
@@ -76,7 +73,17 @@ public class Employee {
         this.id = id;
     }
 
+
+    private boolean isEmpty(String str){
+        if (str == "")
+            return  true;
+        else return  false;
+    }
     public void setName(String name) {
+        if (this.isEmpty(name)) {
+            System.out.println("error");
+            return;
+        }
         this.name = name;
     }
 

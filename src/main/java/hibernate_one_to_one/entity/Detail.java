@@ -1,7 +1,7 @@
 /* for Bi-directional connection  need add
 * field private Employee employee; with annotation @OneToOne(mappedBy = "empDetails", cascade = CascadeType.ALL)
 * and setter & getter for a field Employee*/
-package hibernate_test2.entity;
+package hibernate_one_to_one.entity;
 import javax.persistence.OneToOne;
 import javax.persistence.*;
 

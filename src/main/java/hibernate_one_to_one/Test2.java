@@ -1,11 +1,11 @@
 /* since we added Attribute @OneToOne(mappedBy = "empDetails")  relation between classes became Bi direction.
 now we can save all data to database by table 'details'
   */
-package hibernate_test2;
+package hibernate_one_to_one;
 
 
-import hibernate_test2.entity.Detail;
-import hibernate_test2.entity.Employee;
+import hibernate_one_to_one.entity.Detail;
+import hibernate_one_to_one.entity.Employee;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -17,9 +17,7 @@ public class Test2 {
 
         /* to handle ERROR: "Connection leak detected: there are 1 unclosed connections upon shutting down" */
         Session session = null;
-
-
-        try {
+         try {
             session = factory.getCurrentSession();
             session.beginTransaction();
             Employee employee = new Employee("ALex","Valev","Sales",5000);
@@ -29,13 +27,15 @@ public class Test2 {
 //            employee.setEmpDetails(detail);
 //            detail.setEmployee(employee);
 
-            //Detail detailInfo = session.get(Detail.class,5);
+            Detail detailInfo = session.get(Detail.class,6);
             // detailInfo.getEmployee().setEmpDetails(null);
-             Employee employeeInfo = session.get(Employee.class,12);
-             employeeInfo.setEmpDetails(detail);
+
+
+            //   Employee employeeInfo = session.get(Employee.class,12);
+            // employeeInfo.setEmpDetails(detail);
 
             /* because of Cascade.ALL data will change in all Joined tables */
-            session.save(detail);
+            // session.save(detail);
             /* because of Cascade.ALL data will change in all Joined tables */
 
              // session.delete(detailInfo);
@@ -43,7 +43,7 @@ public class Test2 {
 
 
 
-            //System.out.println(detailInfo.getEmployee() + "\n" + detailInfo);
+            System.out.println(detailInfo.getEmployee() + "\n" + detailInfo);
 
             /* how delete only details of Employee ?
             detailInfo.getEmployee().setEmpDetails(null);
@@ -68,3 +68,5 @@ public class Test2 {
     }
 
 }
+
+
