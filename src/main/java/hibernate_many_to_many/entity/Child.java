@@ -17,8 +17,6 @@ public class Child {
     @Column(name = "age")
     private int age;
 
-
-    private List<Section> sectionList;
     public Child() {
     }
 
@@ -26,9 +24,12 @@ public class Child {
         this.name = name;
         this.age = age;
     }
-@ManyToMany(cascade = CascadeType.ALL)
-@JoinTable(name = "child_section",joinColumns = @JoinColumn (name = "child_id"), inverseJoinColumns = @JoinColumn (name = "section_id"))
-    public List<Section> getSectionList() {
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "child_section",joinColumns = @JoinColumn (name = "child_id"), inverseJoinColumns = @JoinColumn (name = "section_id"))
+    private List<Section> sectionList;
+
+public List<Section> getSectionList() {
         return sectionList;
     }
 

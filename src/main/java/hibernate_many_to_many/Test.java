@@ -19,9 +19,30 @@ public class Test {
             session = factory.getCurrentSession();
             session.beginTransaction();
 
+Section sec1 = new Section("football");
+Section sec2 = new Section("baseball");
+Child child1 = new Child("Mark",10);
+Child child2 = new Child("Yakiv",5);
+Child child3 = new Child("Julia",12);
+
+sec1.addChildSection(child1);
+sec1.addChildSection(child2);
+sec2.addChildSection(child1);
+sec2.addChildSection(child3);
+
+session.save(sec1);
+session.save(sec2);
+
+
+session.getTransaction().commit();
+
 
         } finally {
-            System.out.println("done");
+            assert session != null;
+            session.close();
+            System.out.println("session close");
+            factory.close();
+            System.out.println("factory close");
         }
 
     }
