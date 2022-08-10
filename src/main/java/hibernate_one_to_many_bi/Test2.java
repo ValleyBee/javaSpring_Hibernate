@@ -43,7 +43,7 @@ public class Test2 {
             System.out.println("-------------- 2 Show department -------------------------------------------");
             System.out.println(departmentInfo);
             System.out.println("-------------  3 Show employees of department-------------------------------");
-          //  departmentInfo.getEmps().get(0); // to avoid exception Lazy failed
+          //  departmentInfo.getEmps().get(0); // to avoid throw exception Lazy failed
 
             System.out.println(departmentInfo.getEmps());
             System.out.println("");
