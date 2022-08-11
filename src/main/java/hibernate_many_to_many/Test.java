@@ -23,18 +23,20 @@ public class Test {
 //Section sec2 = new Section("baseball");
 Section sec1 = session.get(Section.class,1); // add existing
 Section sec2 = session.get(Section.class,2); // add existing
-Section sec3 = new Section("hockey");
+Section sec3 = new Section("lazy-cozy");
 
 //Child child1 = new Child("Mark",10);
 //Child child2 = new Child("Yakiv",5);
 //Child child3 = new Child("Julia",12);
 
 
-Child child4 = new Child("Kote",3);
-child4.addChildSection(sec1);
-child4.addChildSection(sec2);
+Child child4 = new Child("LazyBoy",15);
+session.persist(sec3);
+
 child4.addChildSection(sec3);
-session.save(child4);
+
+session.persist(child4); // if Cascade not ALL  use persist instead of save
+
 
 //sec1.addChildSection(child1);
 //sec1.addChildSection(child2);

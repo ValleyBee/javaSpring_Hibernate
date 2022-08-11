@@ -18,7 +18,7 @@ public class Section {
     private String name;
 
     /* JoinColumn refers to jointqble PK source table and inverseColumn refers to jointable PK target table*/
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.DETACH,CascadeType.MERGE})
     @JoinTable(name = "child_section", joinColumns = @JoinColumn(name = "section_id"), inverseJoinColumns = @JoinColumn(name = "child_id"))
     private List<Child> childList;
 
