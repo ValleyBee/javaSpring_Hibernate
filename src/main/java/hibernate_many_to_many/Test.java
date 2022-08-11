@@ -37,7 +37,6 @@ child4.addChildSection(sec3);
 
 session.persist(child4); // if Cascade not ALL  use persist instead of save
 
-
 //sec1.addChildSection(child1);
 //sec1.addChildSection(child2);
 //sec2.addChildSection(child1);
